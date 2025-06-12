@@ -8,6 +8,6 @@ import (
 )
 
 func UserRoutes(api fiber.Router) {
-	api.Get("/me", middlewares.TokenMiddleware(), controllers.Me)
-	api.Delete("/delete-account", middlewares.TokenMiddleware(), controllers.DeleteUserById)
+	api.Get("/me", middlewares.AuthMiddleware(), controllers.Me)
+	api.Delete("/delete-account", middlewares.AuthMiddleware(), controllers.DeleteUserById)
 }

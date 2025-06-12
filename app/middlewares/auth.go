@@ -12,7 +12,7 @@ import (
 	"github.com/golang-jwt/jwt/v5"
 )
 
-func TokenMiddleware() fiber.Handler {
+func AuthMiddleware() fiber.Handler {
 	return func(c *fiber.Ctx) error {
 		accessTokenString := c.Cookies("accessToken")
 
