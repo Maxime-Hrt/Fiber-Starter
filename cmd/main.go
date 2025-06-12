@@ -19,6 +19,7 @@ import (
 func main() {
 	config.LoadEnv(".env")
 	db.ConnectDB()
+	db.ConnectRedis()
 
 	app := fiber.New()
 

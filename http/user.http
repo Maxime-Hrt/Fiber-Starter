@@ -1,8 +1,14 @@
 ### Me
 curl -X GET http://localhost:3000/api/me \
   --cookie "
-    accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEwODAyMDMxNDYzMzczMjA5NjEsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzQ5NzMwNTA3fQ.8nhLPoC_fyev1D5fAyB-_ZtdzwamFXhm4TCMfyKsn6g;
-    refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NTIzMTkzMjEsInJvbGUiOiJ1c2VyIiwidXNlcklkIjoxMDgwMjAzMTQ2MzM3MzIwOTYxfQ.cJ1dhgnTh5sIKkjPnUOSJyqVRXDXk8j-2IoQu4wiGb0;
+    accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEwODAyMDMxNDYzMzczMjA5NjEsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzQ5NzMxODQwfQ.YXoYiHz5ZafVJLuAvvoJs0yyKsXpgFlO0hHyajG3E50;
+    refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEwODAyMDMxNDYzMzczMjA5NjEsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzUyMzIyOTQwfQ.6GteZz9qW26ZUog1tymIb2Uuf64L07lJ91oLGYOpQ3Y;
     "
 
+### Delete user account
+curl -X DELETE http://localhost:3000/api/delete-account \
+  --cookie "
+    accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEwODAyMDMxNDYzMzczMjA5NjEsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzQ5NzMxODQwfQ.YXoYiHz5ZafVJLuAvvoJs0yyKsXpgFlO0hHyajG3E50;
+    refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEwODAyMDMxNDYzMzczMjA5NjEsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzUyMzIyOTQwfQ.6GteZz9qW26ZUog1tymIb2Uuf64L07lJ91oLGYOpQ3Y;
+    "
 
