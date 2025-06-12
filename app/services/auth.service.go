@@ -31,40 +31,34 @@ func SignUp(name, email, password string) (*models.User, error) {
 	return &user, nil
 }
 
-/*
-export function generateTokens(user: User) {
-    const accessTokenPayload = {
-        userId: user._id?.toString(),
-        role: user.role
-    }
-
-    const refreshTokenPayload = {
-        userId: user._id?.toString(),
-        role: user.role
-    }
-
-    if (!JWT_SECRET) {
-        throw new Error("JWT_SECRET is not defined")
-    }
-
-    const accessToken = jwt.sign(accessTokenPayload, JWT_SECRET, { expiresIn: "15m" as jwt.SignOptions["expiresIn"] })
-    const refreshToken = jwt.sign(refreshTokenPayload, JWT_SECRET, { expiresIn: "30d" as jwt.SignOptions["expiresIn"] })
-
-    return { accessToken, refreshToken }
-}
-*/
-
-func GenerateTokens(user *models.User) (string, string, error) {
-	accessTokenClaims := jwt.MapClaims{
-		"userId": user.ID,
-		"role":   user.Role,
-		"exp":    time.Now().Add(15 * time.Minute).Unix(),
+func SignIn(email, password string) (*models.User, error) {
+	user, err := GetUserByEmail(email)
+	if err != nil {
+		return nil, err
 	}
 
-	refreshTokenClaims := jwt.MapClaims{
-		"userId": user.ID,
-		"role":   user.Role,
-		"exp":    time.Now().Add(30 * 24 * time.Hour).Unix(),
+	if err := user.ComparePassword(password); err != nil {
+		return nil, errors.New("invalid password")
+	}
+
+	return user, nil
+}
+
+func GenerateTokens(user *models.User) (string, string, error) {
+	accessTokenClaims := models.CustomClaims{
+		UserID: user.ID,
+		Role:   user.Role,
+		RegisteredClaims: jwt.RegisteredClaims{
+			ExpiresAt: jwt.NewNumericDate(time.Now().Add(15 * time.Minute)),
+		},
+	}
+
+	refreshTokenClaims := models.CustomClaims{
+		UserID: user.ID,
+		Role:   user.Role,
+		RegisteredClaims: jwt.RegisteredClaims{
+			ExpiresAt: jwt.NewNumericDate(time.Now().Add(30 * 24 * time.Hour)),
+		},
 	}
 
 	accessToken, err := jwt.NewWithClaims(jwt.SigningMethodHS256, accessTokenClaims).SignedString([]byte(os.Getenv("JWT_SECRET")))

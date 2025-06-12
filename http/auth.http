@@ -5,3 +5,11 @@ curl -X POST http://localhost:3000/api/signup \
     "email": "tester.password@app.co",
     "password": "12345678"
 }'
+
+### Sign In
+curl -X POST http://localhost:3000/api/signin \
+-H "Content-Type: application/json" \
+-d '{
+    "email": "tester.password@app.com",
+    "password": "12345678"
+}'

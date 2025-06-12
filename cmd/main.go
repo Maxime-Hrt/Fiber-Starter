@@ -25,7 +25,7 @@ func main() {
 	app.Use(recover.New())
 	app.Use(cors.New(cors.Config{
 		AllowCredentials: true,
-		AllowOrigins:     "http://localhost:5173", // Set specific origin instead of wildcard
+		AllowOrigins:     "http://localhost:5173",
 		AllowHeaders:     "Content-Type, Authorization",
 	}))
 
