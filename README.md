@@ -28,7 +28,7 @@ Ensure the following are installed on your machine:
 
 ```bash
 # 1. Clone the repository without history
-git clone --depth=1 https://github.com/Maxime-Hrt/Typescript-API-Starter.git new-project
+git clone --depth=1 https://github.com/Maxime-Hrt/Fiber-Starter.git new-project
 
 # 2. Navigate to the project folder
 cd new-project
